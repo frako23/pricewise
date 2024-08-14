@@ -1,5 +1,6 @@
 "use client";
 
+import { scrapeAndStoreProduct } from "@/lib/actions";
 import React, { FormEvent, useState } from "react";
 
 export const Searchbar = () => {
@@ -23,7 +24,7 @@ export const Searchbar = () => {
     }
     return false;
   };
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const isValidLink = isValidAmanzonProductUrl(searchPrompt);
@@ -32,6 +33,8 @@ export const Searchbar = () => {
 
     try {
       setisLoading(true);
+
+      const product = await scrapeAndStoreProduct(searchPrompt);
     } catch (error) {
       console.log(error);
     } finally {
