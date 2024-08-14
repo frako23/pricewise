@@ -30,7 +30,7 @@ const heroImages = [
 
 export const HeroCarousel = () => {
   return (
-    <div>
+    <div className="hero-carousel">
       <Carousel
         showThumbs={false}
         autoPlay
@@ -50,6 +50,14 @@ export const HeroCarousel = () => {
           />
         ))}
       </Carousel>
+
+      <Image
+        src="assets/icons/hand-drawn-arrow.svg"
+        width={175}
+        height={175}
+        alt="arrow"
+        className="max-xl:hidden absolute -left-[15%] bottom-0 z-0"
+      />
     </div>
   );
 };
